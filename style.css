@@ -1,0 +1,433 @@
+:root {
+    --primary-color: #00296b;
+    --secondary-color: #003f88;
+    --accent-color: #ffcc00;
+    --alert-color: #ff0000;
+    --bg-color: #f4f4f4;
+    --text-color: #333;
+    --light-text: #666;
+    --card-bg: #ffffff;
+    --card-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    --card-hover-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    --card-radius: 10px;
+    --transition-speed: 0.3s;
+}
+
+/* تنسيق عام */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--secondary-color);
+    transition: color var(--transition-speed);
+}
+
+a:hover {
+    color: var(--accent-color);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* الأخبار العاجلة */
+.breaking-news {
+    background-color: var(--alert-color);
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.breaking-label {
+    display: inline-block;
+    background-color: white;
+    color: var(--alert-color);
+    padding: 2px 8px;
+    margin-left: 10px;
+    border-radius: 4px;
+}
+
+.breaking-content {
+    display: inline-block;
+    white-space: nowrap;
+    animation: scroll-rtl 20s linear infinite;
+}
+
+@keyframes scroll-rtl {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* الهيدر */
+header {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+header h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+/* قائمة التنقل */
+nav ul {
+    list-style: none;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: color var(--transition-speed);
+    position: relative;
+    padding-bottom: 3px;
+}
+
+nav ul li a:hover {
+    color: var(--accent-color);
+}
+
+nav ul li a[aria-current="page"]::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--accent-color);
+}
+
+/* قائمة همبرغر */
+.hamburger-menu {
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 100;
+}
+
+.hamburger-menu span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px 0;
+    transition: all 0.3s;
+}
+
+/* الأخبار الرئيسية */
+main {
+    padding: 20px 0;
+}
+
+section {
+    margin-bottom: 30px;
+}
+
+section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    font-size: 1.8rem;
+}
+
+.news-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    justify-content: center;
+}
+
+.news-card {
+    background: var(--card-bg);
+    border-radius: var(--card-radius);
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--card-hover-shadow);
+}
+
+.news-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+
+.news-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.news-card h3 {
+    font-size: 1.2rem;
+    margin: 15px;
+    color: var(--primary-color);
+}
+
+.news-card p {
+    margin: 0 15px 15px;
+    color: var(--light-text);
+    font-size: 0.9rem;
+}
+
+/* تفاصيل الخبر */
+.news-article {
+    background: var(--card-bg);
+    border-radius: var(--card-radius);
+    box-shadow: var(--card-shadow);
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.news-article h2 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    text-align: right;
+}
+
+.news-date {
+    color: var(--light-text);
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+.news-image-container {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.news-image {
+    max-width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    border-radius: 5px;
+}
+
+.news-content {
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.news-tags {
+    margin-bottom: 20px;
+}
+
+.tag {
+    display: inline-block;
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+.news-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.btn-back, .btn-share {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color var(--transition-speed);
+}
+
+.btn-back:hover, .btn-share:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* رسائل التحميل والخطأ */
+.loading-message {
+    text-align: center;
+    padding: 20px;
+    color: var(--light-text);
+}
+
+.error-message, .error-container {
+    text-align: center;
+    padding: 20px;
+    color: var(--alert-color);
+    background-color: rgba(255, 0, 0, 0.1);
+    border-radius: var(--card-radius);
+    margin: 20px 0;
+}
+
+.error-container .btn-back {
+    margin-top: 15px;
+}
+
+/* الفوتر */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.social-media {
+    margin-top: 15px;
+}
+
+.social-media a {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.social-media img {
+    width: 30px;
+    height: 30px;
+    transition: transform var(--transition-speed);
+}
+
+.social-media img:hover {
+    transform: scale(1.2);
+}
+
+/* الأخبار ذات الصلة */
+#related-news h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+#related-news .news-card {
+    margin-bottom: 0;
+}
+
+/* تجاوب الموقع */
+@media (max-width: 992px) {
+    html {
+        font-size: 15px;
+    }
+    
+    .news-container {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: block;
+    }
+    
+    nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+        background-color: var(--secondary-color);
+        z-index: 100;
+        padding: 0;
+    }
+    
+    nav.active ul {
+        display: flex;
+    }
+    
+    nav ul li {
+        margin: 0;
+        padding: 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .news-article h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    html {
+        font-size: 14px;
+    }
+    
+    header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .news-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .news-card {
+        max-width: 100%;
+    }
+    
+    .breaking-label {
+        display: block;
+        margin: 0 0 5px 0;
+    }
+    
+    .news-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .btn-back, .btn-share {
+        width: 100%;
+        text-align: center;
+    }
+}
